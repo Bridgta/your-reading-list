@@ -26,8 +26,10 @@
             </li>
           </ul>
           <ul class="right">
-            <li><a href="/about">About</a></li>
-            <li><a href="/reading">View Your Readig List</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="/readings">View Your Readig List</a></li>
+            <li><a href="{% url 'readings_create' %}">Add a Reading</a></li>
+            <li><a href="{% url 'index' %}">View All My Readings</a></li>
           </ul>
         </div>
       </nav>

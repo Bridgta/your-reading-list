@@ -1,21 +1,24 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Reading
 
-# class Reading:
-#     def __init__(self, title, author, description, pages):
-#         self.title = title
-#         self.author = author
-#         self.description = description
-#         self.pages = pages
 
-readings = [
-    Reading('Eloquent Javascript', 'Et el.', 'Explore the complexities of the language of Javascript', 880),
-    Reading('Cats Cradle', 'Kurt Vonnegut', 'Find the way of Bokonon', 300),
-    Reading('NY Times Aticle', 'Anon.', '2020 geopolitical outlooks and perdictions', 4)
-]
+class ReadingCreate(CreateView):
+    model = Reading
+    fields = '__all__'
 
+class ReadingUpdate(UpdateView):
+    model = Reading
+    fields = ['title', 'description', 'pages']
 
-# Define the home view
+class ReadingDelete(DeleteView):
+    model = Reading
+    success_url = '/readings/'
+
+# readings = [
+#     Reading('NY Times Aticle', 'Anon.', '2020 geopolitical outlooks and perdictions', 4)
+# ]
+
 def home(request):
     return render(request, 'home.html')
 

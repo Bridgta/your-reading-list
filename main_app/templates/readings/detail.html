@@ -13,6 +13,11 @@
     <p>Pages: Article or short story</p>
     {% endif %}
   </div>
+  <div class="card-action">
+    <a href="{% url 'readings_update' reading.id %}">Edit</a>
+    <a href="{% url 'readings_delete' reading.id %}">Delete</a>
+  </div>
+</div>
 </div>
 
 {% endblock %}
