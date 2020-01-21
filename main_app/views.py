@@ -25,3 +25,7 @@ def about(request):
 def readings_index(request):
     readings = Reading.objects.all()
     return render(request, 'readings/index.html', { 'readings': readings })
+
+def readings_detail(request, reading_id):
+    reading = Reading.objects.get(id=reading_id)
+    return render(request, 'readings/detail.html', { 'reading': reading })

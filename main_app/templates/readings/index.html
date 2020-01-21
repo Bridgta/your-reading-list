@@ -4,15 +4,17 @@
 
 {% for reading in readings %}
 <div class="card">
-  <div class="card-content">
-    <span class="card-title">{{ reading.title }}</span>
-    <p>Author: {{ reading.author }}</p>
-    <p>Description: {{ reading.description }}</p>
-    {% if reading.pages > 10 %}
-    <p>Pages: {{ reading.pages }}</p>
-    {% else %}
-    <p>Pages: article or short story</p>
-    {% endif %}
-  </div>
+  <a href="{% url 'detail' reading.id %}">
+    <div class="card-content">
+      <span class="card-title">{{ reading.title }}</span>
+      <p>Author: {{ reading.author }}</p>
+      <p>Description: {{ reading.description }}</p>
+      {% if reading.pages > 10 %}
+      <p>Pages: {{ reading.pages }}</p>
+      {% else %}
+      <p>Pages: article or short story</p>
+      {% endif %}
+    </div>
+  </a>
 </div>
 {% endfor %} {% endblock %}
