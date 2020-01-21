@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Reading
+from .forms import ReadForm
 
 
 class ReadingCreate(CreateView):
@@ -31,4 +32,13 @@ def readings_index(request):
 
 def readings_detail(request, reading_id):
     reading = Reading.objects.get(id=reading_id)
-    return render(request, 'readings/detail.html', { 'reading': reading })
+    read_form = ReadForm()
+    return render(request, 'readings/detail.html', { 'reading': reading, 'read_form': read_form })
+
+def add_read(request, reading_id):
+    form = ReadForm(request.POST)
+    if form.is_valid():
+        new_read = form.save(commit=False)
+        new_read.reading_id = reading_id
+        new_read.save()
+    return redirect('detail', reading_id=reading_id)

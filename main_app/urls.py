@@ -9,4 +9,5 @@ urlpatterns = [
     path('readings/create/', views.ReadingCreate.as_view(), name='readings_create'),
     path('readings/<int:pk>/update/', views.ReadingUpdate.as_view(), name='readings_update'),
     path('readings/<int:pk>/delete/', views.ReadingDelete.as_view(), name='readings_delete'),
+    path('readings/<int:reading_id>/add_read/', views.add_read, name='add_read'),
 ]

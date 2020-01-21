@@ -21,6 +21,10 @@
     </div>
   </div>
   <div class="col s6">
+    <form action="{% url 'add_read' reading.id %}" method="post">
+      {% csrf_token %} {{ read_form.as_p }}
+      <input type="submit" class="btn" value="Add Read" />
+    </form>
     <table class="striped">
       <thead>
         <tr>
@@ -29,7 +33,7 @@
         </tr>
       </thead>
       <tbody>
-        {% for read in Reading.read_set.all %}
+        {% for read in reading.read_set.all %}
         <tr>
           <td>{{read.date}}</td>
           <td>{{read.get_chapter_display}}</td>
@@ -39,5 +43,16 @@
     </table>
   </div>
 </div>
+<script>
+  var dateEl = document.getElementById("id_date");
+  M.Datepicker.init(dateEl, {
+    format: "yyyy-mm-dd",
+    defaultDate: new Date(),
+    setDefaultDate: true,
+    autoClose: true
+  });
 
+  var selectEl = document.getElementById("id_chapter");
+  M.FormSelect.init(selectEl);
+</script>
 {% endblock %}
