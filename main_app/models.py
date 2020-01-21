@@ -7,5 +7,5 @@ class Reading(models.Model):
     pages = models.IntegerField()
 
 
-# def __str__(self):
-#         return self.name
+def __str__(self):
+        return self.name
