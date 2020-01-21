@@ -2,7 +2,6 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  background-color: #e1f5fe;
 }
 
 main {
@@ -15,9 +14,9 @@ footer {
 }
 
 #headmon {
-  background-color: #81d4fa;
+  background-color: #b3e5fc;
 }
 
 #bottommon {
-  background-color: #81d4fa;
+  background-color: #b3e5fc;
 }

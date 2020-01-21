@@ -7,10 +7,12 @@ from .forms import ReadForm
 class ReadingCreate(CreateView):
     model = Reading
     fields = '__all__'
+    success_url = '/readings/'
 
 class ReadingUpdate(UpdateView):
     model = Reading
-    fields = ['title', 'description', 'pages']
+    fields = '__all__'
+    success_url = '/readings/'
 
 class ReadingDelete(DeleteView):
     model = Reading
