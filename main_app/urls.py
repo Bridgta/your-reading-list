@@ -10,4 +10,9 @@ urlpatterns = [
     path('readings/<int:pk>/update/', views.ReadingUpdate.as_view(), name='readings_update'),
     path('readings/<int:pk>/delete/', views.ReadingDelete.as_view(), name='readings_delete'),
     path('readings/<int:reading_id>/add_read/', views.add_read, name='add_read'),
+    path('notes/', views.NoteList.as_view(), name='notes_index'),
+    path('notes/<int:pk>/', views.NoteDetail.as_view(), name='notes_detail'),
+    path('notes/create/', views.NoteCreate.as_view(), name='notes_create'),
+    path('notes/<int:pk>/update/', views.NoteUpdate.as_view(), name='notes_update'),
+    path('notes/<int:pk>/delete/', views.NoteDelete.as_view(), name='notes_delete'),
 ]

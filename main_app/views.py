@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Reading
+from django.views.generic import ListView, DetailView
+from .models import Reading, Note
 from .forms import ReadForm
 
 
@@ -17,10 +18,6 @@ class ReadingUpdate(UpdateView):
 class ReadingDelete(DeleteView):
     model = Reading
     success_url = '/readings/'
-
-# readings = [
-#     Reading('NY Times Aticle', 'Anon.', '2020 geopolitical outlooks and perdictions', 4)
-# ]
 
 def home(request):
     return render(request, 'home.html')
@@ -44,3 +41,21 @@ def add_read(request, reading_id):
         new_read.reading_id = reading_id
         new_read.save()
     return redirect('detail', reading_id=reading_id)
+
+class NoteList(ListView):
+    model = Note
+
+class NoteDetail(DetailView):
+    model = Note
+
+class NoteCreate(CreateView):
+    model = Note
+    fields = '__all__'
+
+class NoteUpdate(UpdateView):
+    model = Note
+    fields = ['quote']
+
+class NoteDelete(DeleteView):
+    model = Note
+    success_url = '/notes/'

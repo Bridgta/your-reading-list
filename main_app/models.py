@@ -8,13 +8,21 @@ CHAPS = (
         ('3', '3+ Chapters')
 )
 
+class Note(models.Model):
+        quote = models.CharField(max_length=100)
+
+        def __str__(self):
+                return self.name
+
+        def get_absolute_url(self):
+                return reverse('notes_detail', kwargs={'pk': self.id})
+
 class Reading(models.Model):
         title = models.CharField(max_length=100)
         author = models.CharField(max_length=100)
         description = models.TextField(max_length=300)
         pages = models.IntegerField()
-
-        # quotes = models.ManyToManyField(quote)
+        notes = models.ManyToManyField(Note)
 
 def __str__(self):
         return self.name
