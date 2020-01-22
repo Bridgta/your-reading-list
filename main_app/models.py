@@ -29,9 +29,7 @@ class Read(models.Model):
         date = models.DateField('Reading date')
         chapter = models.CharField(
                 max_length=1,
-                # add the 'choices' field option
                 choices=CHAPS,
-                # set the default value for meal to be 'B'
                 default=CHAPS[0][0]
         )
         reading = models.ForeignKey(Reading, on_delete=models.CASCADE)
