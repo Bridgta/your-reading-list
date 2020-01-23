@@ -9,13 +9,14 @@ CHAPS = (
 )
 
 class Note(models.Model):
-        quote = models.CharField(max_length=100)
+        bookmark = models.CharField(max_length=150)
+        color = models.CharField(max_length=20)
 
-        def __str__(self):
-                return self.name
+def __str__(self):
+        return self.name
 
-        def get_absolute_url(self):
-                return reverse('notes_detail', kwargs={'pk': self.id})
+def get_absolute_url(self):
+        return reverse('notes_detail', kwargs={'pk': self.id})
 
 class Reading(models.Model):
         title = models.CharField(max_length=100)

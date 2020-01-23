@@ -36,7 +36,9 @@
           </ul>
           <ul class="right">
             <li><a href="{% url 'about' %}">About</a></li>
-            <li><a href="/readings">View Your Readig List</a></li>
+            <li><a href="{% url 'notes_create' %}">Add a Note</a></li>
+            <li><a href="{% url 'notes_index' %}">View All Notes</a></li>
+            <!-- <li><a href="/readings">View Your Readig List</a></li> -->
             <li><a href="{% url 'readings_create' %}">Add a Reading</a></li>
             <li><a href="{% url 'index' %}">View All My Readings</a></li>
           </ul>

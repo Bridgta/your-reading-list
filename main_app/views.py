@@ -7,7 +7,7 @@ from .forms import ReadForm
 
 class ReadingCreate(CreateView):
     model = Reading
-    fields = '__all__'
+    fields = ['title', 'author', 'description', 'pages']
     success_url = '/readings/'
 
 class ReadingUpdate(UpdateView):
@@ -33,7 +33,8 @@ def readings_detail(request, reading_id):
     reading = Reading.objects.get(id=reading_id)
     notes_reading_doesnt_have = Reading.objects.exclude(id__in = reading.notes.all().values_list('id'))
     read_form = ReadForm()
-    return render(request, 'readings/detail.html', { 'reading': reading, 'read_form': read_form, 'notes': notes_reading_doesnt_have})
+    return render(request, 'readings/detail.html', 
+        { 'reading': reading, 'read_form': read_form, 'notes': notes_reading_doesnt_have})
 
 def add_read(request, reading_id):
     form = ReadForm(request.POST)
@@ -47,6 +48,11 @@ def assoc_note(request, reading_id, note_id):
     Reading.objects.get(id=reading_id).notes.add(note_id)
     return redirect('detail', note_id=note_id)
 
+def unassoc_note(request, reading_id, note_id):
+    Reading.objects.get(id=reading_id).notes.remove(note_id)
+    return redirect('detail', reading_id=reading_id)
+
+
 class NoteList(ListView):
     model = Note
 
@@ -56,10 +62,12 @@ class NoteDetail(DetailView):
 class NoteCreate(CreateView):
     model = Note
     fields = '__all__'
+    success_url = '/readings/'
 
 class NoteUpdate(UpdateView):
     model = Note
-    fields = ['quote']
+    fields = ['bookmark', 'color']
+    success_url = '/notes/'
 
 class NoteDelete(DeleteView):
     model = Note

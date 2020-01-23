@@ -1,0 +1,14 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>Bookmark List</h1>
+
+{% for note in note_list %}
+<a href="{% url 'notes_detail' note.id %}">
+  <div class="card">
+    <div class="card-content">
+      <span class="card-title">{{ note.bookmark }}</span>
+      <p>Color: {{ note.color }}</p>
+    </div>
+  </div>
+</a>
+{% endfor %} {% endblock %}

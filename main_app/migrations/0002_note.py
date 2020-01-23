@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
             name='Note',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('quote', models.CharField(max_length=100)),
+                ('bookmark', models.CharField(max_length=100)),
             ],
         ),
     ]
