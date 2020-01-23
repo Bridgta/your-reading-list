@@ -31,8 +31,9 @@ def readings_index(request):
 
 def readings_detail(request, reading_id):
     reading = Reading.objects.get(id=reading_id)
+    notes_reading_doesnt_have = Reading.objects.exclude(id__in = reading.notes.all().values_list('id'))
     read_form = ReadForm()
-    return render(request, 'readings/detail.html', { 'reading': reading, 'read_form': read_form })
+    return render(request, 'readings/detail.html', { 'reading': reading, 'read_form': read_form, 'notes': notes_reading_doesnt_have})
 
 def add_read(request, reading_id):
     form = ReadForm(request.POST)
@@ -41,6 +42,10 @@ def add_read(request, reading_id):
         new_read.reading_id = reading_id
         new_read.save()
     return redirect('detail', reading_id=reading_id)
+
+def assoc_note(request, reading_id, note_id):
+    Reading.objects.get(id=reading_id).notes.add(note_id)
+    return redirect('detail', note_id=note_id)
 
 class NoteList(ListView):
     model = Note

@@ -10,6 +10,7 @@ urlpatterns = [
     path('readings/<int:pk>/update/', views.ReadingUpdate.as_view(), name='readings_update'),
     path('readings/<int:pk>/delete/', views.ReadingDelete.as_view(), name='readings_delete'),
     path('readings/<int:reading_id>/add_read/', views.add_read, name='add_read'),
+    path('readings/<int:reading_id>/assoc_notes/<int:notes_id>/', views.assoc_toy, name='assoc_notes'),
     path('notes/', views.NoteList.as_view(), name='notes_index'),
     path('notes/<int:pk>/', views.NoteDetail.as_view(), name='notes_detail'),
     path('notes/create/', views.NoteCreate.as_view(), name='notes_create'),
