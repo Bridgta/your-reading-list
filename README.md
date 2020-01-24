@@ -9,6 +9,6 @@
  - not have permission to perform CRUD abilities to other's readings,
  - enjoy trailing commas throughout the code,
  
- ###tech used
+ ### Tech Stack
  
  Python, Django, PostgresSQL, AWS.
