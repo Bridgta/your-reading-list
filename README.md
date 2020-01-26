@@ -12,3 +12,5 @@
  ### Tech Stack
  
  Python, Django, PostgresSQL, AWS.
+ 
+ ## ERD and Wireframes 
